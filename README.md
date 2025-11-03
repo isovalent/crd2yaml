@@ -50,8 +50,9 @@ Open http://localhost:12080 in your browser.
 
 ```bash
 docker pull pjablonski123/visual-crd:latest
+docker run -p 8080:12080 pjablonski123/visual-crd:latest
 ```
-Open http://localhost:8080 in your browser.
+Open http://localhost:12080 in your browser.
 
 ---
 
