@@ -16,6 +16,8 @@ export LOCAL_PREBUILD=true        # run npm install && npm run build locally
 
 bash deploy-cloudrun.sh
 ```
+Open https://<cloudrun-url> in your browser.
+
 
 ### 2️⃣ Run it Locally
 
@@ -36,7 +38,7 @@ Build the image locally or use the prebuilt version.
 # docker build -t <repo>/<image>:<tag> .
 ```
 
-- Run a pod on Kubernetes cluster
+- Run a pod on a local Kubernetes cluster
 
 ```bash
 kubectl apply -f k8s-visual-crd.yaml
