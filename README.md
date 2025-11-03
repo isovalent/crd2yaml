@@ -1,38 +1,104 @@
-# crd2yaml
-A CRD to YAML visual config generator
+# 🧩 crd2yaml
+A CRD → YAML visual configuration generator
 
-## How run it?
+---
 
-1. Run it in the cloud. 
+## 🚀 How to Run
 
-For example, in GCP Cloud Run.
+### 1️⃣ Run it in the Cloud (e.g., GCP Cloud Run)
 
+```bash
 export PROJECT_ID=<PROJECT_ID>
-
-export REGION=<REGION eg. us-central1>
-
-export LOCAL_BUILD=true
-
+export REGION=<REGION>            # e.g. us-central1
+export LOCAL_BUILD=true           # build locally instead of Cloud Build
 export LOCAL_BUILD_TOOL=<podman|docker>
-
-export LOCAL_PREBUILD=true
+export LOCAL_PREBUILD=true        # run npm install && npm run build locally
 
 bash deploy-cloudrun.sh
+```
 
-2. Run it locally on a PC.
+### 2️⃣ Run it Locally
 
+```bash
 npm install
 npm run dev
+```
 
-3. Run it as a container/pod.
+### 3️⃣ Run it as a Container/Pod
 
-Build a container's image locally.
-The image ready to use: pjablonski123/visual-crd:latest
+Build the image locally or use the prebuilt version.
 
-## How to use it?
+- Local build
 
-1. Upload or search for a CRD on GitHub. A GH token is stored on the client side only.
-2. Upload or search for config YAML examples. 
-3. Familiarise yourself with the parameters of the specific CRD through a form or/and a mermaid graph.
-4. Modify parameters as needed.
-5. Download a YAML configuration file.
+```bash
+# Example:
+# docker build -t pjablonski123/visual-crd:latest .
+```
+
+- Run container locally
+
+```bash
+docker run --rm -p 3000:3000 pjablonski123/visual-crd:latest
+```
+
+- Prebuilt image
+
+```bash
+docker pull pjablonski123/visual-crd:latest
+```
+
+---
+
+## 🧠 How to Use
+
+- Upload or search for a CRD on GitHub.
+  - The GitHub token is optional and stored on the client side only.
+- Upload or search for configuration YAML examples.
+- Explore CRD parameters via an auto-generated form and a Mermaid diagram.
+- Modify parameters as needed using the generated form.
+- Download the generated YAML configuration file.
+
+---
+
+## 🧾 Example Workflow
+
+```mermaid
+flowchart TD
+    A[Upload CRD] --> B[Parse CRD Schema]
+    B --> C[Generate Form / Graph View]
+    C --> D[Modify Parameters]
+    D --> E[Export YAML Config]
+```
+
+---
+
+## 🧰 Technologies Used
+
+- Node.js / React – UI and logic
+- Mermaid.js – CRD visualization
+- GitHub API – CRD and YAML discovery
+- Cloud Run / Docker / Podman – deployment
+
+---
+
+## 🪪 License
+
+This project is released under the Apache License 2.0.  
+You are free to use, modify, and distribute it under the terms of that license.  
+See the LICENSE file for details.
+
+---
+
+## 🤖 AI Generation Note
+
+Human-led project development. The project’s code and documentation were generated using an LLM. Then human edits focused on testing, deployment, and formatting.
+
+---
+
+## 👥 Contributing
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feat/my-change`
+3. Make your changes and add tests if applicable.
+4. Commit and push: `git push origin feat/my-change`
+5. Open a Pull Request and describe the changes.
