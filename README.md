@@ -16,7 +16,7 @@ export LOCAL_PREBUILD=true        # run npm install && npm run build locally
 
 bash deploy-cloudrun.sh
 ```
-Open https://<cloudrun-url> in your browser.
+Open https://[cloudrun-url] in your browser.
 
 ### Note: Requirements to run deploy-cloudrun.sh
 
