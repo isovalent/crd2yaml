@@ -2,7 +2,7 @@
 A CRD → YAML visual configuration generator
 
 
-![Demo](./docs/visual-crd-demo.gif)
+![Demo](./visual-crd-demo.gif)
 
 
 ---
