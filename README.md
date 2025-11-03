@@ -1,6 +1,10 @@
 # 🧩 crd2yaml
 A CRD → YAML visual configuration generator
 
+
+![Demo](./docs/visual-crd-demo.gif)
+
+
 ---
 
 ## 🚀 How to Run
