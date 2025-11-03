@@ -23,6 +23,7 @@ bash deploy-cloudrun.sh
 npm install
 npm run dev
 ```
+Open http://localhost:5173 in your browser.
 
 ### 3️⃣ Run it as a Container/Pod
 
@@ -32,21 +33,23 @@ Build the image locally or use the prebuilt version.
 
 ```bash
 # Example:
-# docker build -t pjablonski123/visual-crd:latest .
+# docker build -t <repo>/<image>:<tag> .
 ```
 
-- Run container locally
+- Run a pod on Kubernetes cluster
 
 ```bash
-docker run --rm -p 3000:3000 pjablonski123/visual-crd:latest
+kubectl apply -f k8s-visual-crd.yaml
+kubectl port-forward svc/visual-crd 8080:12080
 ```
+Open http://localhost:12080 in your browser.
 
 - Prebuilt image
 
 ```bash
 docker pull pjablonski123/visual-crd:latest
 ```
-
+Open http://localhost:8080 in your browser.
 ---
 
 ## 🧠 How to Use

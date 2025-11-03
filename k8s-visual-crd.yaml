@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: visual-crd-nginx
+data:
+  default.conf: |
+    server {
+      listen       8080;
+      server_name  _;
+      root /usr/share/nginx/html;
+      # IMPORTANT: disable AIO on this runtime
+      aio off;
+      sendfile on;
+
+      location / {
+        try_files $uri $uri/ /index.html;
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visual-crd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visual-crd
+  template:
+    metadata:
+      labels:
+        app: visual-crd
+    spec:
+      containers:
+      - name: visual-crd
+        image: pjablonski123/visual-crd:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: visual-crd-nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: visual-crd
+spec:
+  selector:
+    app: visual-crd
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  type: ClusterIP
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: visual-crd
+# spec:
+#   rules:
+#   - host: visual-crd.example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: visual-crd
+#             port:
+#               number: 80
