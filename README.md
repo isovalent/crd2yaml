@@ -50,6 +50,7 @@ Open http://localhost:12080 in your browser.
 docker pull pjablonski123/visual-crd:latest
 ```
 Open http://localhost:8080 in your browser.
+
 ---
 
 ## 🧠 How to Use
